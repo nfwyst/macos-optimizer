@@ -82,13 +82,13 @@ AGENTS_TO_DISABLE=()
 
 # Safari useless stuff
 AGENTS_TO_DISABLE+=(
-  'com.apple.Safari.SafeBrowsing.Service',
-  'com.apple.SafariBookmarksSyncAgent',
-  'com.apple.SafariCloudHistoryPushAgent',
-  'com.apple.SafariHistoryServiceAgent',
-  'com.apple.SafariLaunchAgent',
-  'com.apple.SafariNotificationAgent',
-  'com.apple.SafariPlugInUpdateNotifier',
+  'com.apple.Safari.SafeBrowsing.Service'
+  'com.apple.SafariBookmarksSyncAgent'
+  'com.apple.SafariCloudHistoryPushAgent'
+  'com.apple.SafariHistoryServiceAgent'
+  'com.apple.SafariLaunchAgent'
+  'com.apple.SafariNotificationAgent'
+  'com.apple.SafariPlugInUpdateNotifier'
 )
 
 # Map
@@ -106,7 +106,6 @@ AGENTS_TO_DISABLE+=(
 AGENTS_TO_DISABLE+=(
   'com.apple.spindump_agent'
   'com.apple.ReportCrash'
-  'com.apple.ReportCrash.Root'
   'com.apple.diagnostics_agent'
 )
 
