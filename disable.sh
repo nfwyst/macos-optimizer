@@ -91,6 +91,20 @@ AGENTS_TO_DISABLE+=(
   'com.apple.SafariPlugInUpdateNotifier'
 )
 
+# iMessage / Facetime
+AGENTS_TO_DISABLE+=(
+  'com.apple.imagent'
+  'com.apple.imautomatichistorydeletionagent'
+  'com.apple.imklaunchagent'
+  'com.apple.imtransferagent'
+  'com.apple.avconferenced'
+)
+
+# reminder
+AGENTS_TO_DISABLE+=(
+  'com.apple.remindd'
+)
+
 # Map
 AGENTS_TO_DISABLE+=(
   'com.apple.Maps.pushdaemon'
@@ -122,10 +136,44 @@ AGENTS_TO_DISABLE+=(
   'com.apple.AMPArtworkAgent'
 )
 
+# VoiceMemos
+AGENTS_TO_DISABLE+=(
+  'com.apple.voicememod'
+)
+
+# Homekit
+AGENTS_TO_DISABLE+=(
+  'com.apple.homed'
+)
+
+# Contacts
+AGENTS_TO_DISABLE+=(
+  'com.apple.suggestd'
+  'com.apple.AddressBook.abd'
+  'com.apple.AddressBook.SourceSync'
+)
+
+# Phone Call Handoff
+AGENTS_TO_DISABLE+=(
+  'com.apple.rapportd-user'
+  'com.apple.telephonyutilities.callservicesd'
+)
+
 # Others
 AGENTS_TO_DISABLE+=(
   'com.apple.SocialPushAgent'
   'com.apple.macos.studentd'
+  'com.apple.CommCenter-osx'
+  'com.apple.touristd' # Shows what's new but keeps lingering around talking back to apple
+  'com.apple.photoanalysisd'
+  # mediaanalysisd photos that's identifying faces and objects.  It is CPU intensive process
+  'com.apple.mediaanalysisd'
+  'com.apple.mediaremoteagent'
+)
+
+# helpd is a macOS agent that manages software documentation.
+AGENTS_TO_DISABLE=(
+  'com.apple.helpd'
 )
 
 for agent in "${AGENTS_TO_DISABLE[@]}"; do
