@@ -172,7 +172,7 @@ AGENTS_TO_DISABLE+=(
 )
 
 # helpd is a macOS agent that manages software documentation.
-AGENTS_TO_DISABLE=(
+AGENTS_TO_DISABLE+=(
   'com.apple.helpd'
 )
 
