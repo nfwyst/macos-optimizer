@@ -148,3 +148,6 @@ DAEMONS_TO_DISABLE+=(
 for daemon in "${DAEMONS_TO_DISABLE[@]}"; do
   disable "$daemon" Daemon
 done
+
+defaults write com.apple.systempreferences AttentionPrefBundleIDs 0
+killall Dock
