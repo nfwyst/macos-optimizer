@@ -80,6 +80,20 @@ disable() {
 # Agents to disable
 AGENTS_TO_DISABLE=()
 
+# iCloud
+AGENTS_TO_DISABLE+=(
+  'com.apple.security.cloudkeychainproxy3'
+	'com.apple.iCloudUserNotifications'
+	'com.apple.icloud.findmydeviced.findmydevice-user-agent'
+	'com.apple.icloud.fmfd'
+	'com.apple.icloud.searchpartyuseragent'
+	'com.apple.cloudd'
+	'com.apple.cloudpaird'
+	'com.apple.cloudphotod'
+	'com.apple.followupd'
+	'com.apple.protectedcloudstorage.protectedcloudkeysyncing'
+)
+
 # Safari useless stuff
 AGENTS_TO_DISABLE+=(
   'com.apple.Safari.SafeBrowsing.Service'
@@ -95,7 +109,6 @@ AGENTS_TO_DISABLE+=(
 AGENTS_TO_DISABLE+=(
   'com.apple.imagent'
   'com.apple.imautomatichistorydeletionagent'
-  'com.apple.imklaunchagent'
   'com.apple.imtransferagent'
   'com.apple.avconferenced'
 )
@@ -121,6 +134,10 @@ AGENTS_TO_DISABLE+=(
   'com.apple.spindump_agent'
   'com.apple.ReportCrash'
   'com.apple.diagnostics_agent'
+	'com.apple.ReportGPURestart'
+	'com.apple.ReportPanic'
+	'com.apple.DiagnosticReportCleanup'
+	'com.apple.TrustEvaluationAgent'
 )
 
 # Screentime
@@ -136,14 +153,17 @@ AGENTS_TO_DISABLE+=(
   'com.apple.AMPArtworkAgent'
 )
 
-# VoiceMemos
+# VoiceOver / accessibility-related stuff
 AGENTS_TO_DISABLE+=(
-  'com.apple.voicememod'
+	'com.apple.voicememod'
 )
 
 # Homekit
 AGENTS_TO_DISABLE+=(
   'com.apple.homed'
+	'com.apple.familycircled'
+	'com.apple.familycontrols.useragent'
+	'com.apple.familynotificationd'
 )
 
 # Contacts
@@ -151,6 +171,10 @@ AGENTS_TO_DISABLE+=(
   'com.apple.suggestd'
   'com.apple.AddressBook.abd'
   'com.apple.AddressBook.SourceSync'
+  'com.apple.AddressBook.AssistantService'
+  'com.apple.AddressBook.ContactsAccountsService'
+  'com.apple.contacts.donation-agent'
+  'com.apple.ContactsAgent'
 )
 
 # Phone Call Handoff
@@ -159,21 +183,65 @@ AGENTS_TO_DISABLE+=(
   'com.apple.telephonyutilities.callservicesd'
 )
 
+# Photos
+AGENTS_TO_DISABLE+=(
+  'com.apple.photolibraryd'
+	'com.apple.mediastream.mstreamd'
+	'com.apple.photoanalysisd'
+)
+
 # Others
 AGENTS_TO_DISABLE+=(
   'com.apple.SocialPushAgent'
   'com.apple.macos.studentd'
   'com.apple.CommCenter-osx'
   'com.apple.touristd' # Shows what's new but keeps lingering around talking back to apple
-  'com.apple.photoanalysisd'
   # mediaanalysisd photos that's identifying faces and objects.  It is CPU intensive process
   'com.apple.mediaanalysisd'
   'com.apple.mediaremoteagent'
+  'com.apple.parsecd'
+  'com.apple.identityservicesd'
+  'com.apple.parentalcontrols.check'
+  'com.apple.syncdefaultsd'
 )
 
 # helpd is a macOS agent that manages software documentation.
 AGENTS_TO_DISABLE+=(
   'com.apple.helpd'
+)
+
+# AirDrop
+AGENTS_TO_DISABLE+=(
+  'com.apple.sharingd'
+)
+
+# Screensharing
+AGENTS_TO_DISABLE+=(
+  'com.apple.screensharing.MessagesAgent'
+	'com.apple.screensharing.agent'
+	'com.apple.screensharing.menuextra'
+)
+
+# Siri
+AGENTS_TO_DISABLE+=(
+  'com.apple.siriknowledged'
+	'com.apple.assistant_service'
+	'com.apple.assistantd'
+	'com.apple.Siri.agent'
+	'com.apple.knowledge-agent'
+	'com.apple.parsec-fbf'
+)
+
+# Sidecar
+AGENTS_TO_DISABLE+=(
+  'com.apple.sidecar-hid-relay'
+	'com.apple.sidecar-relay'
+)
+
+# Keyboard services
+AGENTS_TO_DISABLE+=(
+  'com.apple.keyboardservicesd'
+	'com.apple.KeyboardAccessAgent'
 )
 
 for agent in "${AGENTS_TO_DISABLE[@]}"; do
@@ -186,6 +254,13 @@ DAEMONS_TO_DISABLE=()
 # iCloud
 DAEMONS_TO_DISABLE+=(
   'com.apple.analyticsd'
+	'com.apple.icloud.findmydeviced'
+	'com.apple.icloud.searchpartyd'
+)
+
+# Screensharing
+DAEMONS_TO_DISABLE+=(
+  'com.apple.screensharing'
 )
 
 # Game Center
