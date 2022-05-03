@@ -244,13 +244,6 @@ AGENTS_TO_DISABLE+=(
   'com.apple.KeyboardAccessAgent'
 )
 
-# SystemStats
-AGENTS_TO_DISABLE+=(
-  'com.apple.systemstats.analysis'
-  'com.apple.systemstats.daily'
-  'com.apple.systemstats.microstackshot_periodic'
-)
-
 for agent in "${AGENTS_TO_DISABLE[@]}"; do
   disable "$agent" Agent
 done
@@ -273,6 +266,13 @@ DAEMONS_TO_DISABLE+=(
 # Game Center
 DAEMONS_TO_DISABLE+=(
   'com.apple.GameController.gamecontrollerd'
+)
+
+# SystemStats
+DAEMONS_TO_DISABLE+=(
+  'com.apple.systemstats.analysis'
+  'com.apple.systemstats.daily'
+  'com.apple.systemstats.microstackshot_periodic'
 )
 
 for daemon in "${DAEMONS_TO_DISABLE[@]}"; do
