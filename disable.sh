@@ -83,15 +83,15 @@ AGENTS_TO_DISABLE=()
 # iCloud
 AGENTS_TO_DISABLE+=(
   'com.apple.security.cloudkeychainproxy3'
-	'com.apple.iCloudUserNotifications'
-	'com.apple.icloud.findmydeviced.findmydevice-user-agent'
-	'com.apple.icloud.fmfd'
-	'com.apple.icloud.searchpartyuseragent'
-	'com.apple.cloudd'
-	'com.apple.cloudpaird'
-	'com.apple.cloudphotod'
-	'com.apple.followupd'
-	'com.apple.protectedcloudstorage.protectedcloudkeysyncing'
+  'com.apple.iCloudUserNotifications'
+  'com.apple.icloud.findmydeviced.findmydevice-user-agent'
+  'com.apple.icloud.fmfd'
+  'com.apple.icloud.searchpartyuseragent'
+  'com.apple.cloudd'
+  'com.apple.cloudpaird'
+  'com.apple.cloudphotod'
+  'com.apple.followupd'
+  'com.apple.protectedcloudstorage.protectedcloudkeysyncing'
 )
 
 # Safari useless stuff
@@ -134,10 +134,10 @@ AGENTS_TO_DISABLE+=(
   'com.apple.spindump_agent'
   'com.apple.ReportCrash'
   'com.apple.diagnostics_agent'
-	'com.apple.ReportGPURestart'
-	'com.apple.ReportPanic'
-	'com.apple.DiagnosticReportCleanup'
-	'com.apple.TrustEvaluationAgent'
+  'com.apple.ReportGPURestart'
+  'com.apple.ReportPanic'
+  'com.apple.DiagnosticReportCleanup'
+  'com.apple.TrustEvaluationAgent'
 )
 
 # Screentime
@@ -155,15 +155,15 @@ AGENTS_TO_DISABLE+=(
 
 # VoiceOver / accessibility-related stuff
 AGENTS_TO_DISABLE+=(
-	'com.apple.voicememod'
+  'com.apple.voicememod'
 )
 
 # Homekit
 AGENTS_TO_DISABLE+=(
   'com.apple.homed'
-	'com.apple.familycircled'
-	'com.apple.familycontrols.useragent'
-	'com.apple.familynotificationd'
+  'com.apple.familycircled'
+  'com.apple.familycontrols.useragent'
+  'com.apple.familynotificationd'
 )
 
 # Contacts
@@ -186,8 +186,8 @@ AGENTS_TO_DISABLE+=(
 # Photos
 AGENTS_TO_DISABLE+=(
   'com.apple.photolibraryd'
-	'com.apple.mediastream.mstreamd'
-	'com.apple.photoanalysisd'
+  'com.apple.mediastream.mstreamd'
+  'com.apple.photoanalysisd'
 )
 
 # Others
@@ -218,30 +218,37 @@ AGENTS_TO_DISABLE+=(
 # Screensharing
 AGENTS_TO_DISABLE+=(
   'com.apple.screensharing.MessagesAgent'
-	'com.apple.screensharing.agent'
-	'com.apple.screensharing.menuextra'
+  'com.apple.screensharing.agent'
+  'com.apple.screensharing.menuextra'
 )
 
 # Siri
 AGENTS_TO_DISABLE+=(
   'com.apple.siriknowledged'
-	'com.apple.assistant_service'
-	'com.apple.assistantd'
-	'com.apple.Siri.agent'
-	'com.apple.knowledge-agent'
-	'com.apple.parsec-fbf'
+  'com.apple.assistant_service'
+  'com.apple.assistantd'
+  'com.apple.Siri.agent'
+  'com.apple.knowledge-agent'
+  'com.apple.parsec-fbf'
 )
 
 # Sidecar
 AGENTS_TO_DISABLE+=(
   'com.apple.sidecar-hid-relay'
-	'com.apple.sidecar-relay'
+  'com.apple.sidecar-relay'
 )
 
 # Keyboard services
 AGENTS_TO_DISABLE+=(
   'com.apple.keyboardservicesd'
-	'com.apple.KeyboardAccessAgent'
+  'com.apple.KeyboardAccessAgent'
+)
+
+# SystemStats
+AGENTS_TO_DISABLE+=(
+  'com.apple.systemstats.analysis'
+  'com.apple.systemstats.daily'
+  'com.apple.systemstats.microstackshot_periodic'
 )
 
 for agent in "${AGENTS_TO_DISABLE[@]}"; do
@@ -254,8 +261,8 @@ DAEMONS_TO_DISABLE=()
 # iCloud
 DAEMONS_TO_DISABLE+=(
   'com.apple.analyticsd'
-	'com.apple.icloud.findmydeviced'
-	'com.apple.icloud.searchpartyd'
+  'com.apple.icloud.findmydeviced'
+  'com.apple.icloud.searchpartyd'
 )
 
 # Screensharing
