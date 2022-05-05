@@ -268,6 +268,17 @@ DAEMONS_TO_DISABLE+=(
   'com.apple.GameController.gamecontrollerd'
 )
 
+# Debugging process
+DAEMONS_TO_DISABLE+=(
+  'com.apple.ReportCrash.Root'
+  'com.apple.CrashReporterSupportHelper'
+)
+
+# Phone Call Handoff
+DAEMONS_TO_DISABLE+=(
+  'com.apple.rapportd'
+)
+
 # SystemStats
 DAEMONS_TO_DISABLE+=(
   'com.apple.systemstats.analysis'
