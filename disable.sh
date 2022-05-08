@@ -10,16 +10,6 @@ if [[ "$(sw_vers -productVersion)" != 10\.15* ]]; then
   exit 1
 fi
 
-if [[ "${1-}" == "execed" ]]; then
-  reply=
-  printf "Are you pretty damn sure you want to run this? (Yes/No) "
-  read -r reply
-  if [[ $reply != Yes ]]; then
-      echo "Needed a Yes to proceed" >&2
-      exit 1
-  fi
-fi
-
 LC_ALL=C
 export LC_ALL
 
@@ -80,20 +70,6 @@ disable() {
 # Agents to disable
 AGENTS_TO_DISABLE=()
 
-# iCloud
-AGENTS_TO_DISABLE+=(
-  'com.apple.security.cloudkeychainproxy3'
-  'com.apple.iCloudUserNotifications'
-  'com.apple.icloud.findmydeviced.findmydevice-user-agent'
-  'com.apple.icloud.fmfd'
-  'com.apple.icloud.searchpartyuseragent'
-  'com.apple.cloudd'
-  'com.apple.cloudpaird'
-  'com.apple.cloudphotod'
-  'com.apple.followupd'
-  'com.apple.protectedcloudstorage.protectedcloudkeysyncing'
-)
-
 # Safari useless stuff
 AGENTS_TO_DISABLE+=(
   'com.apple.Safari.SafeBrowsing.Service'
@@ -105,45 +81,25 @@ AGENTS_TO_DISABLE+=(
   'com.apple.SafariPlugInUpdateNotifier'
 )
 
-# iMessage / Facetime
-AGENTS_TO_DISABLE+=(
-  'com.apple.imagent'
-  'com.apple.imautomatichistorydeletionagent'
-  'com.apple.imtransferagent'
-  'com.apple.avconferenced'
-)
-
-# reminder
-AGENTS_TO_DISABLE+=(
-  'com.apple.remindd'
-)
-
 # Map
 AGENTS_TO_DISABLE+=(
   'com.apple.Maps.pushdaemon'
+)
+
+# Apple TV
+AGENTS_TO_DISABLE+=(
+  'com.apple.videosubscriptionsd'
+)
+
+# Keyboard services
+AGENTS_TO_DISABLE+=(
+  'com.apple.keyboardservicesd'
 )
 
 # Ad-related
 AGENTS_TO_DISABLE+=(
   'com.apple.ap.adprivacyd'
   'com.apple.ap.adservicesd'
-)
-
-# Debugging process
-AGENTS_TO_DISABLE+=(
-  'com.apple.spindump_agent'
-  'com.apple.ReportCrash'
-  'com.apple.diagnostics_agent'
-  'com.apple.ReportGPURestart'
-  'com.apple.ReportPanic'
-  'com.apple.DiagnosticReportCleanup'
-  'com.apple.TrustEvaluationAgent'
-)
-
-# Screentime
-AGENTS_TO_DISABLE+=(
-  'com.apple.ScreenTimeAgent'
-  'com.apple.UsageTrackingAgent'
 )
 
 # Apple Music/Music.app
@@ -153,95 +109,20 @@ AGENTS_TO_DISABLE+=(
   'com.apple.AMPArtworkAgent'
 )
 
-# VoiceOver / accessibility-related stuff
+# Voicememo
 AGENTS_TO_DISABLE+=(
   'com.apple.voicememod'
 )
 
-# Homekit
+# what's new
 AGENTS_TO_DISABLE+=(
-  'com.apple.homed'
-  'com.apple.familycircled'
-  'com.apple.familycontrols.useragent'
-  'com.apple.familynotificationd'
-)
-
-# Contacts
-AGENTS_TO_DISABLE+=(
-  'com.apple.suggestd'
-  'com.apple.AddressBook.abd'
-  'com.apple.AddressBook.SourceSync'
-  'com.apple.AddressBook.AssistantService'
-  'com.apple.AddressBook.ContactsAccountsService'
-  'com.apple.contacts.donation-agent'
-  'com.apple.ContactsAgent'
-)
-
-# Phone Call Handoff
-AGENTS_TO_DISABLE+=(
-  'com.apple.rapportd-user'
-  'com.apple.telephonyutilities.callservicesd'
-)
-
-# Photos
-AGENTS_TO_DISABLE+=(
-  'com.apple.photolibraryd'
-  'com.apple.mediastream.mstreamd'
-  'com.apple.photoanalysisd'
+  'com.apple.touristd'
 )
 
 # Others
 AGENTS_TO_DISABLE+=(
-  'com.apple.SocialPushAgent'
   'com.apple.macos.studentd'
-  'com.apple.CommCenter-osx'
-  'com.apple.touristd' # Shows what's new but keeps lingering around talking back to apple
-  # mediaanalysisd photos that's identifying faces and objects.  It is CPU intensive process
   'com.apple.mediaanalysisd'
-  'com.apple.mediaremoteagent'
-  'com.apple.parsecd'
-  'com.apple.identityservicesd'
-  'com.apple.parentalcontrols.check'
-  'com.apple.syncdefaultsd'
-)
-
-# helpd is a macOS agent that manages software documentation.
-AGENTS_TO_DISABLE+=(
-  'com.apple.helpd'
-)
-
-# AirDrop
-AGENTS_TO_DISABLE+=(
-  'com.apple.sharingd'
-)
-
-# Screensharing
-AGENTS_TO_DISABLE+=(
-  'com.apple.screensharing.MessagesAgent'
-  'com.apple.screensharing.agent'
-  'com.apple.screensharing.menuextra'
-)
-
-# Siri
-AGENTS_TO_DISABLE+=(
-  'com.apple.siriknowledged'
-  'com.apple.assistant_service'
-  'com.apple.assistantd'
-  'com.apple.Siri.agent'
-  'com.apple.knowledge-agent'
-  'com.apple.parsec-fbf'
-)
-
-# Sidecar
-AGENTS_TO_DISABLE+=(
-  'com.apple.sidecar-hid-relay'
-  'com.apple.sidecar-relay'
-)
-
-# Keyboard services
-AGENTS_TO_DISABLE+=(
-  'com.apple.keyboardservicesd'
-  'com.apple.KeyboardAccessAgent'
 )
 
 for agent in "${AGENTS_TO_DISABLE[@]}"; do
@@ -251,16 +132,14 @@ done
 # Daemons to disable
 DAEMONS_TO_DISABLE=()
 
-# iCloud
+# analytics data
 DAEMONS_TO_DISABLE+=(
   'com.apple.analyticsd'
-  'com.apple.icloud.findmydeviced'
-  'com.apple.icloud.searchpartyd'
 )
 
-# Screensharing
+# windows share network
 DAEMONS_TO_DISABLE+=(
-  'com.apple.screensharing'
+  'com.apple.netbiosd'
 )
 
 # Game Center
@@ -268,27 +147,11 @@ DAEMONS_TO_DISABLE+=(
   'com.apple.GameController.gamecontrollerd'
 )
 
-# Debugging process
+# Stop submits diagnostic information to Apple
 DAEMONS_TO_DISABLE+=(
-  'com.apple.ReportCrash.Root'
-  'com.apple.CrashReporterSupportHelper'
-)
-
-# Phone Call Handoff
-DAEMONS_TO_DISABLE+=(
-  'com.apple.rapportd'
-)
-
-# SystemStats
-DAEMONS_TO_DISABLE+=(
-  'com.apple.systemstats.analysis'
-  'com.apple.systemstats.daily'
-  'com.apple.systemstats.microstackshot_periodic'
+  'com.apple.SubmitDiagInfo'
 )
 
 for daemon in "${DAEMONS_TO_DISABLE[@]}"; do
   disable "$daemon" Daemon
 done
-
-defaults write com.apple.systempreferences AttentionPrefBundleIDs 0
-killall Dock
